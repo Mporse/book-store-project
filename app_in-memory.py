@@ -1,3 +1,7 @@
+"""
+Book store application using only in-memory data structures.
+"""
+
 ### Features/goals:
 # [X] Quit program when user types "q"
 # [] Add function for adding book to database
