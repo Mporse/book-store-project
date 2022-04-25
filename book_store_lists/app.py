@@ -3,14 +3,15 @@ Book store application using only in-memory data structures.
 """
 
 ### Features/goals:
-# [X] Quit program when user types "q"
-# [] Add function for adding book to database
-# [] (related to above) Set up database system that the code should interact with
-# [] Add function for listing all books in the database
-# [] Add function for marking a book as read
-# [] Add function for deleting a book from the database
-# [] Add error handling (for dealing with weird inputs from user)
-
+"""
+[X]: How do we store the movies? - in-memory
+[X]: Quit program when user types "q"
+[]: Add function for adding book to database
+[]: Add function for listing all books in the database
+[]: Add function for marking a book as read
+[]: Add function for deleting a book from the database
+[]: Add error handling (for dealing with weird inputs from user)
+"""
 
 # Import modules.
 from utils import database
@@ -28,3 +29,4 @@ Type your choice here: """
 
 def menu():
     user_input = input(choice_message)
+
