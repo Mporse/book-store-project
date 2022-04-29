@@ -73,18 +73,22 @@ def menu(book_database):
 
         if user_input.lower() in ["a", "add"]:
             database.add_book(book_database)
-        elif user_input.lower() in ["l", "list"]:
-            database.list_books(book_database)
-        elif user_input.lower() in ["f", "find", "s", "search"]:
-            database.find_books(book_database)
-        elif user_input.lower() in ["r", "read"]:
-            database.mark_books(book_database)
-        elif user_input.lower() in ["d", "delete"]:
-            database.delete_books()
         elif user_input.lower() in ["q", "quit"]:
             break
+
+        if len(book_database) > 0:
+            if user_input.lower() in ["l", "list"]:
+                database.list_books(book_database)
+            elif user_input.lower() in ["f", "find", "s", "search"]:
+                database.find_books(book_database)
+            elif user_input.lower() in ["r", "read"]:
+                database.mark_books(book_database)
+            elif user_input.lower() in ["d", "delete"]:
+                database.delete_books()
+            else:
+                print("\nYou did not type one of the options, please try again.\n")
         else:
-            print("\nYou did not type one of the options, please try again.\n")
+            print("\nPlease add a book or exit the program.\n")
 
 # Run program.
 if __name__ == "__main__":
@@ -98,3 +102,10 @@ NB:This program uses Python lists (in-memory data structures) for the database, 
     book_database = []
 
     menu(book_database)
+
+    print("Stopping the book database program ...")
+    print("\nFinal book database content:")
+    if len(book_database) > 0:
+        database.list_books(book_database)
+    else:
+        print("No data.")
