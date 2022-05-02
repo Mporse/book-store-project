@@ -1,6 +1,6 @@
 """
 Script/module with functions for interacting with database.
-There are functions defineded for dealing with adding, deleting, listing and marking books as read.
+There are functions defineded for dealing with adding, deleting, listing, searching for, and marking books as read.
 Other helper function might also have been defined (TBD).
 """
 
@@ -15,19 +15,22 @@ def add_book(book_database):
     book_year = input("Type the release year of the book: ")
     book_pages = input("Type the number of pages in the book: ")
     book_genre = input("Type the genre of the book: ")
+    book_read = False
 
     book_database.append({"title": book_title,
                           "author": book_author,
                           "year": book_year,
                           "pages": book_pages,
-                          "genre": book_genre})
+                          "genre": book_genre,
+                          "read": book_read})
     
     print("\nBook added!\n")
     print(f"Title: {book_title}")
     print(f"Author: {book_author}")
     print(f"Release year: {book_year}")
     print(f"Pages: {book_pages}")
-    print(f"Genre: {book_genre}\n")
+    print(f"Genre: {book_genre}")
+    print(f"Read: {book_read}\n")
 
 
 def list_books(book_database):
@@ -42,7 +45,7 @@ def list_books(book_database):
         print(f"Release year: {book['year']}")
         print(f"Pages: {book['pages']}")
         print(f"Genre: {book['genre']}")
-    
+        print(f"Read: {book['read']}")
     print()
 
 
@@ -52,14 +55,15 @@ def find_books(book_database):
     then returning the found entries.
     """
 
-    properties_to_select = "\n- ".join(book_database[0].keys())
+    properties = list(book_database[0].keys())[0:-1]
+    properties_to_select = "\n- ".join(properties)
 
     print(f"Properties:\n- {properties_to_select}\n")
 
     while True:
         selected_property = input("Type which property from above you want to use for searching for books: ")
 
-        if selected_property.lower() not in book_database[0].keys():
+        if selected_property.lower() not in properties:
             print("You did not type one of the listed properties. Try again.")
         else:
             break
@@ -74,7 +78,15 @@ def find_books(book_database):
 
 
 def mark_books(book_database):
-    pass
+    """
+    Function to mark a book as read.
+    """
+
+    user_input = input("Type the title of the book you wish to mark as read: ")
+
+    for book_idx in range(len(book_database)):
+        if user_input.lower() == book_database[book_idx]["title"].lower():
+            book_database[book_idx]["read"] = True
 
 
 def delete_books():
