@@ -37,8 +37,8 @@ movie = {
 """
 [X]: How do we store the movies? - in-memory
 [X]: Quit program when user types "q"
-[]: Add function for adding book to database
-[]: Add function for listing all books in the database
+[X]: Add function for adding book to database
+[X]: Add function for listing all books in the database
 []: Add function for searching for book(s) in the database
 []: Add function for marking a book as read
 []: Add function for deleting a book from the database
@@ -75,8 +75,7 @@ def menu(book_database):
             database.add_book(book_database)
         elif user_input.lower() in ["q", "quit"]:
             break
-
-        if len(book_database) > 0:
+        elif len(book_database) > 0:
             if user_input.lower() in ["l", "list"]:
                 database.list_books(book_database)
             elif user_input.lower() in ["f", "find", "s", "search"]:
