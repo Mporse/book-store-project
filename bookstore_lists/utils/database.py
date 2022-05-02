@@ -35,10 +35,6 @@ def list_books(book_database):
     Function that lists all the books added to the database.
     """
 
-    if len(book_database) == 0:
-        print("Nothing added to the database yet, please add a book first!")
-        return
-
     for book in book_database:
         print("")
         print(f"Title: {book['title']}")
