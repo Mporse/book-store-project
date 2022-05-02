@@ -83,7 +83,7 @@ def menu(book_database):
             elif user_input.lower() in ["r", "read"]:
                 database.mark_books(book_database)
             elif user_input.lower() in ["d", "delete"]:
-                database.delete_books()
+                database.delete_books(book_database)
             else:
                 print("\nYou did not type one of the options, please try again.\n")
         else:
