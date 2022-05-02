@@ -87,8 +87,11 @@ def mark_books(book_database):
     for book_idx in range(len(book_database)):
         if user_input.lower() == book_database[book_idx]["title"].lower():
             book_database[book_idx]["read"] = True
+        print(f"Deleted book \"{book_database[book_idx]['title']}\"")
 
 
 def delete_books():
-    pass
+    """
+    Function for deleting a user-specifid book from the database.
+    """
 
