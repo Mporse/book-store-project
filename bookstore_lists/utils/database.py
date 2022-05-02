@@ -47,7 +47,30 @@ def list_books(book_database):
 
 
 def find_books(book_database):
-    pass
+    """
+    Function used to search through the database and find matching entries,
+    then returning the found entries.
+    """
+
+    properties_to_select = "\n- ".join(book_database[0].keys())
+
+    print(f"Properties:\n- {properties_to_select}\n")
+
+    while True:
+        selected_property = input("Type which property from above you want to use for searching for books: ")
+
+        if selected_property.lower() not in book_database[0].keys():
+            print("You did not type one of the listed properties. Try again.")
+        else:
+            break
+
+    search_term = input("Type the search term: ")
+    list_property = [book[selected_property.lower()] for book in book_database]
+    found_books = [search_term.lower() == prop.lower() for prop in list_property]
+    found_books = [idx for idx, term_bool in enumerate(found_books) if term_bool]
+    output = [book_database[idx] for idx in found_books]
+
+    list_books(output)
 
 
 def mark_books(book_database):
