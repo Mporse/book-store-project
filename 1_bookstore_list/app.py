@@ -21,21 +21,22 @@ The workflow of using the program should be as follows:
 
 ### Definitions below.
 """
-The data structure of the movie will be of the following format:
-movie = {
-    "title": ... {str},
-    "director": ... {str},
-    "year": ... {int},
-    "duration": ... {int},
-    "genre": ... {str},
-    "cast": ... {list}{str},
-    
-}
+database  = [
+    book1 = {
+        "title": ... {str},
+        "author": ... {str},
+        "year": ... {int},
+        "pages": ... {int},
+        "genre": ... {str}
+    },
+    book2 = {...},
+    book3 = {...}
+]
 """
 
 ### Features/goals.
 """
-[X]: How do we store the movies? - in-memory
+[X]: How do we store the books? - in-memory
 [X]: Quit program when user types "q"
 [X]: Add function for adding book to database
 [X]: Add function for listing all books in the database
