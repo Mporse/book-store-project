@@ -39,10 +39,9 @@ movie = {
 [X]: Quit program when user types "q"
 [X]: Add function for adding book to database
 [X]: Add function for listing all books in the database
-[]: Add function for searching for book(s) in the database
-[]: Add function for marking a book as read
-[]: Add function for deleting a book from the database
-[]: Add error handling (for dealing with weird inputs from user)
+[X]: Add function for searching for book(s) in the database
+[X]: Add function for marking a book as read
+[X]: Add function for deleting a book from the database
 """
 
 ### Import modules.
