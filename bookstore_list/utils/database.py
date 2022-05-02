@@ -97,7 +97,10 @@ def delete_books(book_database):
 
     user_input = input("Type the title of the book you wish to delete: ")
 
-    for book_idx in range(len(book_database)):
-        if user_input.lower() == book_database[book_idx]["title"].lower():
-            deleted_book = book_database.pop(book_idx)
-            print(f"Deleted book: \"{deleted_book['title']}\"")
+    while True:
+        for book_idx in range(len(book_database)):
+            if user_input.lower() == book_database[book_idx]["title"].lower():
+                deleted_book = book_database.pop(book_idx)
+                print(f"Deleted book: \"{deleted_book['title']}\"")
+                break
+        break
