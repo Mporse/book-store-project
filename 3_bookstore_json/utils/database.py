@@ -1,10 +1,10 @@
 """
 This is a movie database/storage program.
 The program uses built-in Python data structures when working with user inputs,
-but contains the ability to save and load the database to/from CSV files as well.
+but contains the ability to save and load the database to/from JSON files as well.
 """
 
-import csv
+import json
 
 def add_book(book_database):
     """
@@ -110,17 +110,13 @@ def delete_books(book_database):
 
 def read_database(database_name):
     """
-    Function to read database data from a CSV file.
+    Function to read database data from a JSON file.
     """
 
-    with open(f"./database_files/{database_name}.csv", "r") as book_database_file:
+    with open(f"./database_files/{database_name}.json", "r") as book_database_file:
         print("Database found - loading ...")
         
-        book_database = []
-        book_database_reader = csv.DictReader(book_database_file)
-
-        for line in book_database_reader:
-            book_database.append(line)
+        book_database = json.load(book_database_file)
         
         print("Database loaded!\n")
     
@@ -129,14 +125,12 @@ def read_database(database_name):
 
 def write_database(book_database, database_name):
     """
-    Function to write database data to a CSV file.
+    Function to write database data to a JSON file.
     """
 
-    with open(f"./database_files/{database_name}.csv", "w") as book_database_file:
+    with open(f"./database_files/{database_name}.json", "w") as book_database_file:
         print("Saving database ...")
         
-        book_database_writer = csv.DictWriter(book_database_file, ["title", "author", "year", "pages", "genre", "read"])
-        book_database_writer.writeheader()
-        book_database_writer.writerows(book_database)
+        json.dump(book_database, book_database_file, indent=4)
 
         print("Database saved!\n")
