@@ -31,7 +31,8 @@ database  = [
         "author": ... {str},
         "year": ... {int},
         "pages": ... {int},
-        "genre": ... {str}
+        "genre": ... {str},
+        "read": ... {bool}
     },
     book2 = {...},
     book3 = {...}
@@ -42,15 +43,18 @@ database  = [
 """
 [X]: How do we store the books? - in-memory and as CSV files
 [X]: Quit program when user types "q"
-[]: Add function for adding book to database
-[]: Add function for listing all books in the database
-[]: Add function for finding / searching for book(s) in the database
-[]: Add function for marking a book as read
-[]: Add function for deleting a book from the database
+[X]: Add function for adding book to database
+[X]: Add function for listing all books in the database
+[X]: Add function for finding / searching for book(s) in the database
+[X]: Add function for marking a book as read
+[X]: Add function for deleting a book from the database
+[X]: Add function for reading database from CSV file
+[X]: Add function for saving/writing database from CSV file
 """
 
 ### Import modules.
 from utils import database
+import os
 
 ### Main part of the program.
 # Define message for users to make a choice.
@@ -98,17 +102,49 @@ if __name__ == "__main__":
     print(
 """
 Welcome to the book database program!
-NB:This program uses Python lists (in-memory data structures) for the database, so nothing is saved when the program exits.
+NB:This program uses a combination of in-memory data structures (Python lists and dictionaries) and saved/loaded CSV files for the database.
 """
     )
 
-    book_database = []
+    # Create folder for storing database files if it doesn't already exist.
+    if not os.path.exists("./database_files"):
+        os.makedirs("./database_files")
+    
+    databases_in_folder = [file_name[:-4] for file_name in os.listdir("./database_files")]
+    databases_in_folder = "\n- ".join(databases_in_folder)
 
+    while True:
+        database_name = input(
+f"""
+Any existing databases are displayed below:
+- {databases_in_folder}
+
+
+
+Type the name of the database you wish to connect to, or type a new name to create a new database:
+""").lower()
+        
+        if not database_name:
+            print("Please enter a valid database name.\n")
+            continue
+        break
+
+    try:
+        book_database = database.read_database(database_name)
+    except:
+        print("\nDatabase not found - creating ...")
+        book_database = []
+
+    
     menu(book_database)
 
     print("Stopping the book database program ...")
     print("\nFinal book database content:")
     if len(book_database) > 0:
         database.list_books(book_database)
+        database.write_database(book_database, database_name)
     else:
-        print("No data.")
+        print("No data to save, no file created.")
+        if os.path.exists(f"./database_files/")
+    
+    print("Done!\nSee ya :)\n")
