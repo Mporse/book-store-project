@@ -144,7 +144,7 @@ Type the name of the database you wish to connect to, or type a new name to crea
         database.list_books(book_database)
         database.write_database(book_database, database_name)
     else:
-        print("No data to save, no file created.")
+        print("No data to save, no file created / empty file removed.")
         if os.path.exists(f"./database_files/{database_name}.csv"):
             os.remove(f"./database_files/{database_name}.csv")
     
